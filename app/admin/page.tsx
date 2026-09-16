@@ -69,7 +69,7 @@ export default function AdminPage() {
         <div className="inquiryList">
           {visible.map((inquiry) => (
             <article className="inquiryCard" key={inquiry.id}>
-              <div className="requestNumber">0{inquiry.id}</div>
+              <div className="requestNumber">{String(inquiry.id).padStart(2, "0").slice(-2)}</div>
               <div className="inquiryMain"><span>{inquiry.service}</span><h3>{inquiry.name}</h3><p>{inquiry.address} · {inquiry.contact}</p></div>
               <label>STAGE
                 <select value={inquiry.stage} onChange={(event) => move(inquiry.id, event.target.value as Stage)}>
