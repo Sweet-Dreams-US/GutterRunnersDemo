@@ -1,0 +1,25 @@
+{
+  "source": {
+    "filename": "hero-rain-source.mp4",
+    "duration": 6.042,
+    "resolution": "1280x720",
+    "fps": 24.0,
+    "codec": "h264",
+    "total_source_frames": 145
+  },
+  "frames": {
+    "target_count": 12,
+    "format": "webp",
+    "quality": 82,
+    "naming_pattern": "frame-{NNNN}.webp"
+  },
+  "recommended_scroll_height": "300vh",
+  "created": "2026-09-24T20:47:50",
+  "desktop": {
+    "resolution": "1280x720",
+    "actual_count": 12,
+    "total_bytes": 1619524,
+    "avg_frame_bytes": 134960,
+    "total_mb": 1.54
+  }
+}

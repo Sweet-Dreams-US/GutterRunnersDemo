@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#26323D">
+  <title>Gutter Runners Admin</title>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+  <div class="admin-mode">Demo mode. Changes are saved on this device until your site goes live.</div>
+  <header class="admin-header">
+    <div><span>GUTTER RUNNERS</span><h1>Site admin</h1></div>
+    <a href="../">View site</a>
+  </header>
+  <nav class="admin-nav" aria-label="Admin sections">
+    <a href="#inquiries">Requests</a>
+    <a href="#photos">Job photos</a>
+    <a href="#pairs">Before and after</a>
+    <a href="#services">Services</a>
+    <a href="#areas">Towns served</a>
+    <a href="#contact">Business info</a>
+    <a href="#announcement">Announcement</a>
+  </nav>
+
+  <main class="admin-main">
+    <section class="admin-section" id="inquiries">
+      <div class="section-head">
+        <div><p class="admin-kicker">Inquiry inbox</p><h2>Estimate requests</h2></div>
+        <div class="head-actions">
+          <label>Filter by status<select id="statusFilter"><option>All</option><option>New</option><option>Contacted</option><option>Estimate sent</option><option>Won</option><option>Lost</option></select></label>
+          <button type="button" id="exportCsv">Export CSV</button>
+        </div>
+      </div>
+      <div id="inquiryList"></div>
+      <div class="empty-state" id="inquiryEmpty"><strong>Estimate requests will appear here.</strong><p>Requests sent from the site arrive with the service, property details, contact information, and any photos.</p></div>
+    </section>
+
+    <section class="admin-section" id="photos">
+      <div class="section-head"><div><p class="admin-kicker">Our work</p><h2>Job photos</h2></div></div>
+      <form id="photoForm" class="editor-form">
+        <label class="admin-upload">Choose a job photo<input type="file" id="jobPhotoFile" accept="image/*" required></label>
+        <label>Caption<input type="text" id="jobPhotoCaption"></label>
+        <label>Service<select id="jobPhotoService"><option>Seamless metal gutters</option><option>Gutter installation</option><option>Gutter repair</option></select></label>
+        <button class="admin-save" type="submit">Add job photo</button>
+      </form>
+      <div id="photoList" class="media-list"></div>
+      <div class="empty-state" id="photoEmpty"><strong>Your photos show here once you add them.</strong><p>The Our work section appears on the site after the first visible photo is added.</p></div>
+    </section>
+
+    <section class="admin-section" id="pairs">
+      <div class="section-head"><div><p class="admin-kicker">Matched views</p><h2>Before and after pairs</h2><p>Both photos must be taken from the same spot at the same angle.</p></div></div>
+      <form id="pairForm" class="editor-form pair-form">
+        <label class="admin-upload">Choose the before photo<input type="file" id="beforeFile" accept="image/*" required></label>
+        <label class="admin-upload">Choose the after photo<input type="file" id="afterFile" accept="image/*" required></label>
+        <label>Caption<input type="text" id="pairCaption"></label>
+        <button class="admin-save" type="submit">Add matched pair</button>
+      </form>
+      <div id="pairList" class="media-list"></div>
+      <div class="empty-state" id="pairEmpty"><strong>Matched pairs show here once you add them.</strong><p>A comparison slider appears on the site for each visible pair.</p></div>
+    </section>
+
+    <section class="admin-section" id="services">
+      <div class="section-head"><div><p class="admin-kicker">Service list</p><h2>Services</h2></div></div>
+      <form id="servicesForm">
+        <div id="servicesEditor"></div>
+        <button class="admin-save sticky-save" type="submit">Save services</button>
+      </form>
+    </section>
+
+    <section class="admin-section" id="areas">
+      <div class="section-head"><div><p class="admin-kicker">Service area</p><h2>Towns served</h2></div></div>
+      <form id="townsForm" class="single-form">
+        <label>One town per line<textarea id="townsInput" rows="7"></textarea></label>
+        <button class="admin-save sticky-save" type="submit">Save towns</button>
+      </form>
+      <p class="form-note">When filled, these towns appear in the site footer.</p>
+    </section>
+
+    <section class="admin-section" id="contact">
+      <div class="section-head"><div><p class="admin-kicker">Public details</p><h2>Business info</h2></div></div>
+      <form id="contactForm" class="single-form">
+        <label>Public phone<input type="tel" id="publicPhone"></label>
+        <label>Public email<input type="email" id="publicEmail"></label>
+        <label>Public address<input type="text" id="publicAddress"></label>
+        <label>Public social links, one per line<textarea id="socialLinks" rows="4"></textarea></label>
+        <button class="admin-save sticky-save" type="submit">Save business info</button>
+      </form>
+      <p class="form-note">Phone and email appear in the navigation and footer only after you save them.</p>
+    </section>
+
+    <section class="admin-section" id="announcement">
+      <div class="section-head"><div><p class="admin-kicker">Site notice</p><h2>Announcement bar</h2></div></div>
+      <form id="announcementForm" class="single-form">
+        <label class="switch-line"><input type="checkbox" id="announcementEnabled"> Show the announcement</label>
+        <label>Text<input type="text" id="announcementText"></label>
+        <label>Optional link<input type="url" id="announcementLink"></label>
+        <div class="date-fields"><label>Start date<input type="date" id="announcementStart"></label><label>End date<input type="date" id="announcementEnd"></label></div>
+        <button class="admin-save sticky-save" type="submit">Save announcement</button>
+      </form>
+    </section>
+  </main>
+  <div class="save-toast" id="saveToast" role="status" aria-live="polite"></div>
+  <script src="admin.js"></script>
+</body>
+</html>
